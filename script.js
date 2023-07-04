@@ -37,9 +37,6 @@ function updateListNumbers() {
   const items = itemList.children;
   for (let i = 0; i < items.length; i++) {
     const itemText = items[i].querySelector('.item-text');
-    const itemNumber = `${i + 1}. `;
-    const originalText = itemText.textContent;
-    const newText = originalText.replace(/^\d+\.\s*/, itemNumber);
-    itemText.textContent = newText;
+    itemText.textContent = `${i + 1}. ${itemText.textContent.substring(itemText.textContent.indexOf(' ') + 1)}`;
   }
 }
