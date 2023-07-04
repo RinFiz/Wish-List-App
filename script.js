@@ -7,7 +7,7 @@ function addItem() {
   const id = Date.now();
   li.id = `item-${id}`;
 
-  li.innerText = `${itemList.childElementCount + 1}. ${itemInput.value}`;
+  li.textContent = `${itemList.childElementCount + 1}. ${itemInput.value}`;
   removeBtn.innerHTML = '×';
   removeBtn.classList.add('remove');
 
@@ -34,3 +34,18 @@ function updateListNumbers() {
     items[i].firstChild.textContent = `${i + 1}. `;
   }
 }
+
+itemInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    addItem();
+  }
+});
+
+itemInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Backspace' && itemInput.value.trim() === '') {
+    const lastItem = itemList.lastElementChild;
+    if (lastItem) {
+      removeItem(lastItem.id);
+    }
+  }
+});
