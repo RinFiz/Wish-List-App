@@ -1,4 +1,5 @@
 function addItem() {
+  const itemInput = document.getElementById('itemInput');
   if (itemInput.value.trim() === '') return;
 
   const li = document.createElement('li');
