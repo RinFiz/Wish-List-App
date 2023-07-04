@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wish List</title>
 	<style>
 		* {
 			margin: 0;
@@ -77,7 +79,6 @@
 			font-weight: bold;
 		}
 	</style>
-	<title>Wish List</title>
 </head>
 <body>
 	<div class="container">
@@ -91,35 +92,41 @@
 
 	<script>
 	function addItem() {
-  if (itemInput.value.trim() === '') return; // ignore empty inputs
+  if (itemInput.value.trim() === '') return;
 
   const li = document.createElement('li');
   const removeBtn = document.createElement('span');
 
-  const id = Date.now(); // generate a unique id for the list item
+  const id = Date.now();
   li.id = `item-${id}`;
 
   li.innerText = `${itemList.childElementCount + 1}. ${itemInput.value}`;
-  removeBtn.innerHTML = '&times;';
+  removeBtn.innerHTML = '×';
   removeBtn.classList.add('remove');
 
   removeBtn.addEventListener('click', () => {
-    removeItem(li.id); // pass the id of the list item to the removeItem function
+    removeItem(li.id);
   });
 
   li.appendChild(removeBtn);
   itemList.appendChild(li);
 
   itemInput.value = '';
-  updateListNumbers(); // call this function to update the list numbers after adding a new item
+  updateListNumbers();
 }
 
 function removeItem(itemId) {
   const item = document.getElementById(itemId);
   item.parentNode.removeChild(item);
-  updateListNumbers(); // call this function to update the list numbers after removing an item
+  updateListNumbers();
 }
 
+function updateListNumbers() {
+  const items = itemList.children;
+  for (let i = 0; i < items.length; i++) {
+    items[i].firstChild.textContent = `${i + 1}. `;
+  }
+}
 	</script>
 </body>
 </html>
