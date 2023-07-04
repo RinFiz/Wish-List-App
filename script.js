@@ -26,3 +26,17 @@ function addItem() {
   itemInput.value = '';
   updateListNumbers();
 }
+
+function removeItem(itemId) {
+  const item = document.getElementById(itemId);
+  item.parentNode.removeChild(item);
+  updateListNumbers();
+}
+
+function updateListNumbers() {
+  const items = itemList.children;
+  for (let i = 0; i < items.length; i++) {
+    const itemText = items[i].querySelector('.item-text');
+    itemText.textContent = `${i + 1}. ${itemText.textContent.substring(3)}`;
+  }
+}
