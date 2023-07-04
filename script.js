@@ -1,5 +1,3 @@
-const itemInput = document.getElementById('itemInput');
-
 function addItem() {
   if (itemInput.value.trim() === '') return;
 
@@ -36,18 +34,3 @@ function updateListNumbers() {
     items[i].firstChild.textContent = `${i + 1}. `;
   }
 }
-
-itemInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    addItem();
-  }
-});
-
-itemInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Backspace' && itemInput.value.trim() === '') {
-    const lastItem = itemList.lastElementChild;
-    if (lastItem) {
-      removeItem(lastItem.id);
-    }
-  }
-});
