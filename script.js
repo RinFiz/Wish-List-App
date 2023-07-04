@@ -8,7 +8,10 @@ function addItem() {
   const id = Date.now();
   li.id = `item-${id}`;
 
-  li.textContent = `${itemList.childElementCount + 1}. ${itemInput.value}`;
+  const itemText = document.createElement('span');
+  itemText.textContent = itemInput.value;
+  itemText.classList.add('item-text');
+
   removeBtn.innerHTML = '×';
   removeBtn.classList.add('remove');
 
@@ -16,23 +19,10 @@ function addItem() {
     removeItem(li.id);
   });
 
+  li.appendChild(itemText);
   li.appendChild(removeBtn);
   itemList.appendChild(li);
 
   itemInput.value = '';
   updateListNumbers();
-}
-
-function removeItem(itemId) {
-  const item = document.getElementById(itemId);
-  item.parentNode.removeChild(item);
-  updateListNumbers();
-}
-
-function updateListNumbers() {
-  const items = itemList.children;
-  for (let i = 0; i < items.length; i++) {
-    const itemText = items[i].textContent.split('. ')[1];
-    items[i].textContent = `${i + 1}. ${itemText}`;
-  }
 }
