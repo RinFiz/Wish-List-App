@@ -39,7 +39,7 @@ function updateListNumbers() {
     const itemText = items[i].querySelector('.item-text');
     const itemNumber = `${i + 1}. `;
     const originalText = itemText.textContent;
-    const itemTextWithoutNumber = originalText.substring(originalText.indexOf('. ') + 2);
+    const itemTextWithoutNumber = originalText.substring(originalText.indexOf(' ') + 1);
     itemText.textContent = itemNumber + itemTextWithoutNumber;
   }
 }
