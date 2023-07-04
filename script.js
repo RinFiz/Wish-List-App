@@ -32,6 +32,7 @@ function removeItem(itemId) {
 function updateListNumbers() {
   const items = itemList.children;
   for (let i = 0; i < items.length; i++) {
-    items[i].firstChild.textContent = `${i + 1}. `;
+    const itemText = items[i].textContent.split('. ')[1];
+    items[i].textContent = `${i + 1}. ${itemText}`;
   }
 }
