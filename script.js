@@ -1,3 +1,5 @@
+const itemInput = document.getElementById('itemInput');
+
 function addItem() {
   if (itemInput.value.trim() === '') return;
 
